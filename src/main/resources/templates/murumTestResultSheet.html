@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{./css/main.css}" rel="stylesheet"/>
+	<link th:href="@{./css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="content" style="margin:1%">
+<body>
+    <form action="#" th:action="@{/testResultSheet/pdf/murumTestResultSheetPdf}" th:object="${testResultSheet}" method="post">
+    <div th:replace="header :: myheader"></div>
+    <center><h5>Test Result of Murum</h5></center>
+    <br/>
+    <center>
+    <table border="1" align="center">
+		<tr>
+	     <th>Sr. No.</th>
+		 <th>Name of Test</th>
+         <th>Liquid Limit</th>
+         <th>Plastic Limit</th>
+        </tr>
+		 <tr class="thbold">
+	    	<td>1</td><td>2</td><td>3</td><td>4</td>
+	    </tr>
+	     <tr th:each="murumMappingList, itemStat : ${testResultSheet.murumMappingList}">
+	     	 <td th:text="*{murumMappingList[__${itemStat.index}__].srNo}" />
+	     	 <input type="hidden" name="murumMappingList.srNo" th:field="*{murumMappingList[__${itemStat.index}__].srNo}" />
+             <td><input name="murumMappingList.nameOfTest" th:field="*{murumMappingList[__${itemStat.index}__].nameOfTest}" /></td>
+             
+             <td><input name="murumMappingList.liquidLimit" th:field="*{murumMappingList[__${itemStat.index}__].liquidLimit}" /></td>
+             <td><input name="murumMappingList.plasticLimit" th:field="*{murumMappingList[__${itemStat.index}__].plasticLimit}" /></td>
+	    </tr> 
+    </table>
+    </center>
+    <br/>
+    <div>
+	    1.The Test Results are based on samples received in the Laboratory
+		<br/>
+		2.Waste material after testing is given back to the Concerned Agency alongwith Test Report.
+    </div>
+     </div>
+     <br/>
+     <br/>
+     <hr/>
+    <div class="formButton">
+   		 <p><input type="submit" value="Print PDF" /> 
+   		  <input type="reset" value="Reset" />
+    </div>
+      <hr/>
+    </form>
+</body>
+</html>

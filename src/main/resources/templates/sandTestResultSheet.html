@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{./css/main.css}" rel="stylesheet"/>
+	<link th:href="@{./css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="content" style="margin:1%">
+<body>
+    <form action="#" th:action="@{/testResultSheet/pdf/sandTestResultSheetPdf}" th:object="${testResultSheet}" method="post">
+    <div th:replace="header :: myheader"></div>
+    <center><h5>Test Result of Sand</h5></center>
+    <br/>
+    <center>
+    <table border="1" align="center">
+		<tr>
+	     <th>Sr. No.</th>
+         <th>Material</th>
+		 <th>Sild and Clay Content (Limit-4% max)</th>
+         <th>Fitness Analysis (Limits -
+             1) Concrete 2.60 to 3.6
+             2) Masonry and plaster - m max
+             3) Pointing & lind coat plaster - 1.6 ).
+         </th>
+        </tr>
+		 <tr class="thbold">
+	    	<td>1</td><td>2</td><td>3</td><td>4</td>
+	    </tr>
+	     <tr th:each="sandMappingList, itemStat : ${testResultSheet.sandMappingList}">
+	     	 <td th:text="*{sandMappingList[__${itemStat.index}__].srNo}" />
+	     	 <input type="hidden" name="sandMappingList.srNo" th:field="*{sandMappingList[__${itemStat.index}__].srNo}" />
+             <td><input name="sandMappingList.material" th:field="*{sandMappingList[__${itemStat.index}__].material}" /></td>
+             <td><input name="sandMappingList.siltAndClayContent" th:field="*{sandMappingList[__${itemStat.index}__].siltAndClayContent}" /></td>
+             <td><input name="sandMappingList.fitnessAnalysis" th:field="*{sandMappingList[__${itemStat.index}__].fitnessAnalysis}" /></td>
+	    </tr> 
+    </table>
+    </center>
+    <br/>
+    <div>
+	    1.The Test Results are based on samples received in the Laboratory
+		<br/>
+		2.Waste material after testing is given back to the Concerned Agency alongwith Test Report.
+    </div>
+     </div>
+     <br/>
+     <br/>
+     <hr/>
+    <div class="formButton">
+   		 <p><input type="submit" value="Print PDF" /> 
+   		  <input type="reset" value="Reset" />
+    </div>
+      <hr/>
+    </form>
+</body>
+</html>

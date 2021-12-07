@@ -1,0 +1,30 @@
+target/
+
+#Intellj
+\.idea/
+*\.iml
+\.settings/
+\.project/
+\.classpath/
+
+#eclipse
+.classpath
+.project
+.cache-main
+.cache-tests
+.factorypath
+
+
+#OSX Stuff
+.DS_Store
+
+# generated config files
+/config/
+/conf/
+/bin/
+
+#other stuff
+*.swp
+.repository
+.project
+.classpath

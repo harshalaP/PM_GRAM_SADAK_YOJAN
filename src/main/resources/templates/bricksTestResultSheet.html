@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{./css/main.css}" rel="stylesheet"/>
+	<link th:href="@{./css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="content" style="margin:1%">
+<body>
+    <form action="#" th:action="@{/testResultSheet/pdf/bricksTestResultSheetPdf}" th:object="${testResultSheet}" method="post">
+    <div th:replace="header :: myheader"></div>
+    <center><h5>Test Result of Bricks</h5></center>
+    <br/>
+    <center>
+    <table border="1" align="center">
+		<tr>
+	     <th>Sr. No.</th>
+		 <th>Material and class of Bricks</th>
+		 <th>Water Absorption(Limits - For 1st class- Max 20%,For IInd class Max 22%)</th>
+		 <th>Compressive Strength kg/cm<sup>2</sup></th>
+		 <th>Remarks</th>
+		 </tr>
+		 <tr class="thbold">
+	    	<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+	    </tr>
+	     <tr th:each="bricksMappingList, itemStat : ${testResultSheet.bricksMappingList}">
+	     	 <td th:text="*{bricksMappingList[__${itemStat.index}__].srNo}" />
+	     	 <input type="hidden" name="bricksMappingList.srNo" th:field="*{bricksMappingList[__${itemStat.index}__].srNo}" />
+             <td><input name="bricksMappingList.materialAndClassOfBricks" th:field="*{bricksMappingList[__${itemStat.index}__].materialAndClassOfBricks}" /></td>
+             <td><input name="bricksMappingList.waterAbsorption" th:field="*{bricksMappingList[__${itemStat.index}__].waterAbsorption}" /></td>
+             
+             <td><input name="bricksMappingList.compressiveStrength" th:field="*{bricksMappingList[__${itemStat.index}__].compressiveStrength}" /></td>
+             <td><input name="bricksMappingList.remarks" th:field="*{bricksMappingList[__${itemStat.index}__].remarks}" /></td>
+	    </tr> 
+    </table>
+    </center>
+    <br/>
+    <div>
+	    1.The Test Results are based on samples received in the Laboratory
+		<br/>
+		2.Waste material after testing is given back to the Concerned Agency alongwith Test Report.
+    </div>
+     </div>
+     <br/>
+     <br/>
+     <hr/>
+    <div class="formButton">
+   		 <p><input type="submit" value="Print PDF" /> 
+   		  <input type="reset" value="Reset" />
+    </div>
+      <hr/>
+    </form>
+</body>
+</html>

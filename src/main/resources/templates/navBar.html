@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="navBar">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{/static/css/main.css}" rel="stylesheet"/>
+</head>
+<div id="content" style="margin:1%">
+
+    <nav th:fragment="navbar" class="navbar navbar-expand-md bg-dark navbar-dark">
+        <center>
+    <div class="container-fluid navbar-header"><b>
+       <br/><hr/><br/>
+        <a th:href="@{|/|}" th:color="white">Home</a>  ||
+        <a th:href="@{|/bricksTestResultSheet|}" th:color="white">Bricks</a>  ||
+        <a th:href="@{|/concreteCubesResultSheet|}" th:color="white">Concrete Cubes</a>  ||
+        <a th:href="@{|/paverBlockTestResultSheet|}" th:color="white">Concrete Paver Block</a>  ||
+        <a th:href="@{|/crushedMetalTestResultSheet|}" th:color="white">Curshed Material</a>  ||
+        <a th:href="@{|/extractionTestResultSheet|}" th:color="white">Extraction</a>  ||
+        <a th:href="@{|/hbMetalTestResultSheet|}" th:color="white">HBMetal</a>  ||
+        <a th:href="@{|/metalTestResultSheet|}" th:color="white">Metal</a>  ||
+        <a th:href="@{|/murumTestResultSheet|}" th:color="white">Murum</a>  ||
+        <a th:href="@{|/penetretionTestResultSheet|}" th:color="white">Penetretion</a>  ||
+        <a th:href="@{|/rubbleTestResultSheet|}" th:color="white">Rubble</a>  ||
+        <a th:href="@{|/sandTestResultSheet|}" th:color="white">Sand</a>  ||
+        <a th:href="@{|/tilesTestResultSheet|}" th:color="white">Tiles</a>
+        <br/><br/><hr/><br/></b>
+        </div></center>
+    </nav>
+<body>
+</html>

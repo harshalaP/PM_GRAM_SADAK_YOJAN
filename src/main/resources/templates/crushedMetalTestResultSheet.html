@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{./css/main.css}" rel="stylesheet"/>
+	<link th:href="@{./css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="content" style="margin:1%">
+<body>
+    <form action="#" th:action="@{/testResultSheet/pdf/crushedMetalTestResultSheetPdf}" th:object="${testResultSheet}" method="post">
+    <div th:replace="header :: myheader"></div>
+    <center><h5>Test Result of Crushed Material</h5></center>
+    <br/>
+    <center>
+    <table border="1" align="center">
+        <tr>
+            <th rowspan=2>Sr. No.</th>
+            <th rowspan=2>Material</th>
+            <th colspan=3>Sleve Analysis</th>
+            <th rowspan=2>Crushing Value Limits-
+            1)Heavy traffic 17% Max.
+            2)Light & medium traffic 23% Max.
+            3)For WBM 30% Max.</th>
+            <th rowspan=2>Water Absorption Limits-
+            1)For WBM & concrete 2 % Max.
+            2)For BC work 1% Max.
+            3)for BT work 2% Max.</th>
+            <th rowspan=2>Impact Value</th>
+        </tr>
+        <tr>
+            <td>Sleve Size  </td>
+            <td>Actual % passing</td>
+            <td>Specified % passing</td>
+        </tr>
+        <tr class="thbold">
+            <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+            <td>6</td><td>7</td><td>8</td>
+        </tr>
+
+	     <tr th:each="crushedMetalMappingList, itemStat : ${testResultSheet.crushedMetalMappingList}">
+	     	 <td th:text="*{crushedMetalMappingList[__${itemStat.index}__].srNo}" />
+	     	 <input type="hidden" name="crushedMetalMappingList.srNo" th:field="*{crushedMetalMappingList[__${itemStat.index}__].srNo}" />
+             <td><input name="crushedMetalMappingList.material" th:field="*{crushedMetalMappingList[__${itemStat.index}__].material}" /></td>
+
+             <td><input name="crushedMetalMappingList.sleveSizeAnalysis" th:field="*{crushedMetalMappingList[__${itemStat.index}__].sleveSizeAnalysis}" /></td>
+             <td><input name="crushedMetalMappingList.actualPercentagePassingAnalysis" th:field="*{crushedMetalMappingList[__${itemStat.index}__].actualPercentagePassingAnalysis}" /></td>
+             <td><input name="crushedMetalMappingList.specifiedPercentageAnalysis" th:field="*{crushedMetalMappingList[__${itemStat.index}__].specifiedPercentageAnalysis}" /></td>
+
+             <td><input name="crushedMetalMappingList.crushingValueLimit" th:field="*{crushedMetalMappingList[__${itemStat.index}__].crushingValueLimit}" /></td>
+             <td><input name="crushedMetalMappingList.waterAbsorptionLimit" th:field="*{crushedMetalMappingList[__${itemStat.index}__].waterAbsorptionLimit}" /></td>
+             <td><input name="crushedMetalMappingList.impactValue" th:field="*{crushedMetalMappingList[__${itemStat.index}__].impactValue}" /></td>
+	    </tr> 
+    </table>
+    </center>
+    <br/>
+    <div>
+	    1.The Test Results are based on samples received in the Laboratory
+		<br/>
+		2.Waste material after testing is given back to the Concerned Agency alongwith Test Report.
+    </div>
+     </div>
+     <br/>
+     <br/>
+     <hr/>
+    <div class="formButton">
+   		 <p><input type="submit" value="Print PDF" /> 
+   		  <input type="reset" value="Reset" />
+    </div>
+      <hr/>
+    </form>
+</body>
+</html>

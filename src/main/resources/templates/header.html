@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="myheader">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{/static/css/main.css}" rel="stylesheet"/>
+    <div th:replace="navBar :: navBar"/>
+</head>
+<div id="content" style="margin:1%">
+<body>
+<center>
+    <table>
+        <tr>
+            <td><img th:src="@{/../images/PMGSY.jpg}" src="../images/PMGSY.jpg" class="img-responsive" alt="Responsive image"/></td>
+            <td>
+                <center>
+                    <h2>PRADHAN MANTRI GRAM SADAK YOJANA</h2>
+                    <h3>DISTRICT lABORATORY, M.R.R.D.A THANE.</h3>
+                    <h4>Test Result Sheet</h4>
+                    <center>
+            </td>
+            <td><img th:src="@{/../images/PMGSY.jpg}" src="../images/PMGSY.jpg" class="img-responsive" alt="Responsive image"/></td>
+        </tr>
+    </table>
+</center>
+<br/>
+<table width="100%">
+    <tr width="100%">
+        <td width="8%" >Job No : </td><td width="10%"><input type="text" readonly="readonly" name="jobId" th:field="${testResultSheet.jobId}" /></td>
+        <td width="8%">Transaction ID : </td><td width="10%"><input readonly="readonly" type="text" name="transactionId" th:field="${testResultSheet.transactionId}" /></td>
+        <td width="5%">Date : </td><td width="10%"><input type="date" name="date" field="*{date}" /></td>
+        <td width="8%">Bank Name : </td><td width="10%"><input type="text" name="bankName" field="*{bankName}" /></td>
+        <td width="8%">Amount Rs. : </td><td width="10%"><input type="text" name="amount" field="*{amount}" /></td>
+    </tr>
+    <tr width="100%">
+        <td width="10%">Division/sub-Division : </td><td colspan="1" width="20%"><input type="text" name="division" field="*{division}" /></td>
+        <td width="10%">Letter No : </td><td><input type="text" name="letterNo" field="*{letterNo}" /></td>
+        <td width="10%">Date : </td><td><input type="date" name="letterDate" field="*{letterDate}" /></td>
+        <td width="10%">Date of receipt : </td><td><input type="date" name="dateOfReceipt" field="*{dateOfReceipt}" /></td>
+    </tr>
+    <tr width="100%">
+        <td width="10%">Name of work : </td><td colspan="3" width="30%"><input class="widthFillAll" type="text" name="nameOfWork1" field="*{nameOfWork1}" /></td>
+    </tr>
+    <tr width="100%">
+        <td width="10%">Name of work : </td><td colspan="3" width="30%"><input class="widthFillAll" type="text" name="nameOfWork2" field="*{nameOfWork2}" /></td>
+    </tr>
+</table>
+<br/>
+</body>
+</div>
+</html>

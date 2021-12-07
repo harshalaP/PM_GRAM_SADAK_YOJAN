@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{./css/main.css}" rel="stylesheet"/>
+	<link th:href="@{./css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="content" style="margin:1%">
+<body>
+    <form action="#" th:action="@{/testResultSheet/pdf/rubbleTestResultSheetPdf}" th:object="${testResultSheet}" method="post">
+    <div th:replace="header :: myheader"></div>
+    <center><h5>Test Result of Rubble</h5></center>
+    <br/>
+    <center>
+    <table border="1" align="center">
+		<tr>
+	     <th>Sr. No.</th>
+         <th>Material</th>
+		 <th>Compressive Strength kg2/cm2</th>
+         <th>Crushing Value</th>
+         <th>Water Absorption (Limits -
+             5% max for WBM & Stone Masonary &
+             concrete,2% Max for BT works).
+         </th>
+        </tr>
+		 <tr class="thbold">
+	    	<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+	    </tr>
+	     <tr th:each="rubbleMappingList, itemStat : ${testResultSheet.rubbleMappingList}">
+	     	 <td th:text="*{rubbleMappingList[__${itemStat.index}__].srNo}" />
+	     	 <input type="hidden" name="rubbleMappingList.srNo" th:field="*{rubbleMappingList[__${itemStat.index}__].srNo}" />
+             <td><input name="rubbleMappingList.material" th:field="*{rubbleMappingList[__${itemStat.index}__].material}" /></td>
+             <td><input name="rubbleMappingList.compressiveStrengthKgcm2" th:field="*{rubbleMappingList[__${itemStat.index}__].compressiveStrengthKgcm2}" /></td>
+             <td><input name="rubbleMappingList.crushingValue" th:field="*{rubbleMappingList[__${itemStat.index}__].crushingValue}" /></td>
+             <td><input name="rubbleMappingList.waterAbsorption" th:field="*{rubbleMappingList[__${itemStat.index}__].waterAbsorption}" /></td>
+         </tr>
+    </table>
+    </center>
+    <br/>
+    <div>
+	    1.The Test Results are based on samples received in the Laboratory
+		<br/>
+		2.Waste material after testing is given back to the Concerned Agency alongwith Test Report.
+    </div>
+     </div>
+     <br/>
+     <br/>
+     <hr/>
+    <div class="formButton">
+   		 <p><input type="submit" value="Print PDF" /> 
+   		  <input type="reset" value="Reset" />
+    </div>
+      <hr/>
+    </form>
+</body>
+</html>

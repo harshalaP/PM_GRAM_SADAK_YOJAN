@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{./css/main.css}" rel="stylesheet"/>
+	<link th:href="@{./css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="content" style="margin:1%">
+<body>
+    <form action="#" th:action="@{/testResultSheet/pdf/paverBlockTestResultSheetPdf}" th:object="${testResultSheet}" method="post">
+    <div th:replace="header :: myheader"></div>
+    <center><h5>Test Result of Concrete Paver Bricks</h5></center>
+    <br/>
+    <center>
+    <table border="1" align="center">
+        <tr>
+            <th rowspan=2>Sr. No.</th>
+            <th rowspan=2>Identification of Mark</th>
+            <th rowspan=2>Concrete Paver Block</th>
+            <th rowspan=2>Date of Testing</th>
+            <th rowspan=2>Plan Area in Sq. Cm.</th>
+            <th rowspan=2>Water Absorption Max 10%</th>
+            <th rowspan=2>Max Load in MT</th>
+            <th colspan=2>Compressesive strength in Kg/cm2</th>
+        </tr>
+        <tr>
+            <td>Actual  </td>
+            <td>Specified</td>
+        </tr>
+        <tr class="thbold">
+            <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+            <td>6</td><td>7</td><td>8</td><td>9</td>
+        </tr>
+
+	     <tr th:each="paverBlockMappingList, itemStat : ${testResultSheet.paverBlockMappingList}">
+	     	 <td th:text="*{paverBlockMappingList[__${itemStat.index}__].srNo}" />
+	     	 <input type="hidden" name="paverBlockMappingList.srNo" th:field="*{paverBlockMappingList[__${itemStat.index}__].srNo}" />
+             <td><input name="paverBlockMappingList.identificationOfMark" th:field="*{paverBlockMappingList[__${itemStat.index}__].identificationOfMark}" /></td>
+             <td><input name="paverBlockMappingList.concretePaverBlock" th:field="*{paverBlockMappingList[__${itemStat.index}__].concretePaverBlock}" /></td>
+             
+             <td><input type="date" name="paverBlockMappingList.dateOfTesting" th:field="*{paverBlockMappingList[__${itemStat.index}__].dateOfTesting}" /></td>
+             <td><input name="paverBlockMappingList.planAreaInSqCm" th:field="*{paverBlockMappingList[__${itemStat.index}__].planAreaInSqCm}" /></td>
+             <td><input name="paverBlockMappingList.waterAbsorption" th:field="*{paverBlockMappingList[__${itemStat.index}__].waterAbsorption}" /></td>
+             
+             <td>
+                 <input name="paverBlockMappingList.maxLoadInMTFirst" th:field="*{paverBlockMappingList[__${itemStat.index}__].maxLoadInMTFirst}" /><br/>
+                 <input name="paverBlockMappingList.maxLoadInMTSecond" th:field="*{paverBlockMappingList[__${itemStat.index}__].maxLoadInMTSecond}" /><br/>
+                 <input name="paverBlockMappingList.maxLoadInMTThird" th:field="*{paverBlockMappingList[__${itemStat.index}__].maxLoadInMTThird}" />
+             </td>
+             
+             <td>
+	             <input name="paverBlockMappingList.compressiveStrengthKgCmFirst" th:field="*{paverBlockMappingList[__${itemStat.index}__].compressiveStrengthKgCmFirst}" /><br/>
+	             <input name="paverBlockMappingList.compressiveStrengthKgCmSecond" th:field="*{paverBlockMappingList[__${itemStat.index}__].compressiveStrengthKgCmSecond}" /><br/>
+	             <input name="paverBlockMappingList.compressiveStrengthKgCmThird" th:field="*{paverBlockMappingList[__${itemStat.index}__].compressiveStrengthKgCmThird}" />
+             </td>
+             
+             <td><input name="paverBlockMappingList.specified" th:field="*{paverBlockMappingList[__${itemStat.index}__].specified}" /></td>
+	    </tr> 
+    </table>
+    </center>
+    <br/>
+    <div>
+	    1.The Test Results are based on samples received in the Laboratory
+		<br/>
+		2.Waste material after testing is given back to the Concerned Agency alongwith Test Report.
+    </div>
+     </div>
+     <br/>
+     <br/>
+     <hr/>
+    <div class="formButton">
+   		 <p><input type="submit" value="Print PDF" /> 
+   		  <input type="reset" value="Reset" />
+    </div>
+      <hr/>
+    </form>
+</body>
+</html>

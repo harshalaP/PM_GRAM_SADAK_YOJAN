@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{./css/main.css}" rel="stylesheet"/>
+	<link th:href="@{./css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="content" style="margin:1%">
+<body>
+    <form action="#" th:action="@{/testResultSheet/pdf/concreteCubesResultSheetPdf}" th:object="${testResultSheet}" method="post">
+
+	<div th:replace="header :: myheader"></div>
+
+    <center><h5>Test Result of Concrete Cubes</h5></center>
+    <br/>
+    <table border="1" align="center">
+		<tr>
+	     <th rowspan=2>Sr. No.</th>
+		 <th rowspan=2>Identification of Mark</th> 
+		 <th rowspan=2>Concrete Mix</th>
+		 <th rowspan=2>Date of casting as per costomer's letter</th>
+		 <th rowspan=2>Date of Testing</th>
+		 <th rowspan=2>Age of specimen in days</th>
+		 <th rowspan=2>Dimension of specimen in cm</th>
+		 <th rowspan=2>Cross Sectional Area in Sq.Cm.</th>
+		 <th colspan=2>Compressesive strength in Kg/cm2</th>
+		 </tr>
+		 <tr>
+		 <td>Observed  </td>
+		 <td>Specified for 28 Days curing</td>
+	    </tr>
+	    <tr class="thbold">
+	    	<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+	    	<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+	    </tr>
+
+
+		<tr th:each="concreteCubesMappingList, itemStat : ${testResultSheet.concreteCubesMappingList}">
+	     	 <td th:text="*{concreteCubesMappingList[__${itemStat.index}__].srNo}" />
+	     	 <input type="hidden" name="concreteCubesMappingList.srNo" th:field="*{concreteCubesMappingList[__${itemStat.index}__].srNo}" />
+             <td><input name="concreteCubesMappingList.identificationOfMark" th:field="*{concreteCubesMappingList[__${itemStat.index}__].identificationOfMark}" /></td>
+             <td><input name="concreteCubesMappingList.concreteMix" th:field="*{concreteCubesMappingList[__${itemStat.index}__].concreteMix}" /></td>
+             
+             <td><input type="date" name="concreteCubesMappingList.dateOfCastingAsPerCostomerLetter" th:field="*{concreteCubesMappingList[__${itemStat.index}__].dateOfCastingAsPerCostomerLetter}" /></td>
+             <td><input type="date" name="concreteCubesMappingList.dateOfTesting" th:field="*{concreteCubesMappingList[__${itemStat.index}__].dateOfTesting}" /></td>
+             
+             <td><input name="concreteCubesMappingList.ageOfSpecimenInDays" th:field="*{concreteCubesMappingList[__${itemStat.index}__].ageOfSpecimenInDays}" /></td>
+             <td><input name="concreteCubesMappingList.dimensionOfSpecimeInCm" th:field="*{concreteCubesMappingList[__${itemStat.index}__].dimensionOfSpecimeInCm}" /></td>
+             
+             <td><input name="concreteCubesMappingList.crossSectionalAreaInSqCm" th:field="*{concreteCubesMappingList[__${itemStat.index}__].crossSectionalAreaInSqCm}" /></td>
+             <td>
+	             <input name="concreteCubesMappingList.observedFirst" th:field="*{concreteCubesMappingList[__${itemStat.index}__].observedFirst}" />
+	             <input name="concreteCubesMappingList.observedFirst" th:field="*{concreteCubesMappingList[__${itemStat.index}__].observedSecond}" />
+	             <input name="concreteCubesMappingList.observedFirst" th:field="*{concreteCubesMappingList[__${itemStat.index}__].observedThird}" />
+             </td>
+             
+             <td><input name="concreteCubesMappingList.specifiedFor28DaysCuring" th:field="*{concreteCubesMappingList[__${itemStat.index}__].specifiedFor28DaysCuring}" /></td>
+	    </tr> 
+    </table>
+    <div>
+	    1.The Test Results are based on samples received in the Laboratory
+		<br/>
+		2.Waste material after testing is given back to the Concerned Agency alongwith Test Report.
+    </div>
+     </div>
+     <br/>
+     <br/>
+     <hr/>
+    <div class="formButton">
+   		 <p><input type="submit" value="Print PDF" /> 
+   		  <input type="reset" value="Reset" />
+    </div>
+      <hr/>
+    </form>
+</body>
+</html>

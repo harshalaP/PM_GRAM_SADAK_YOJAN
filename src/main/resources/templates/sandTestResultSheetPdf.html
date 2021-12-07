@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>PRADHAN MANTRI GRAM SADAK YOJANA</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="content" style="margin:1%">
+    <body>
+    <form action="#" th:action="@{/testResultSheet/pdf/sandTestResultSheetPdf}" th:object="${testResultSheet}" method="post">
+
+        <center>
+            <table  width="100%">
+                <tr>
+                    <td width="25%" align="right"><img alt="PMGSY image" th:src="@{classpath:static/images/PMGSY.jpg}" width="20%" /></td>
+                    <td width="50%">
+                        <center>
+                            <h2>PRADHAN MANTRI GRAM SADAK YOJANA</h2>
+                            <h3>DISTRICT lABORATORY, M.R.R.D.A THANE.</h3>
+                            <br/>
+                            <h4>Test Result Sheet</h4>
+                            <center>
+                    </td>
+                    <td width="25%" align="left"><img alt="PMGSY image" th:src="@{classpath:static/images/PMGSY.jpg}" width="20%"/></td>
+                </tr>
+            </table>
+        </center>
+        <br/>
+
+        <table width="100%">
+            <tr width="100%">
+                <td width="8%" >Job No : </td><td width="10%" th:text="*{jobId}" ></td>
+                <td width="8%">Transaction ID : </td><td width="10%" th:text="*{transactionId}"></td>
+                <td width="5%">Date : </td><td width="10%" th:text="*{date}"></td>
+                <td width="8%">Bank Name : </td><td width="10%" th:text="*{bankName}"></td>
+                <td width="8%">Amount Rs. : </td><td width="10%" th:text="*{amount}"></td>
+            </tr>
+            <tr width="100%">
+                <td width="10%">Division/sub-Division : </td><td colspan="1" width="20%" th:text= "*{division}" ></td>
+                <td width="10%">Letter No : </td><td th:text="*{letterNo}"></td>
+                <td width="10%">Date : </td><td th:text="*{letterDate}" /></td>
+                <td width="10%">Date of receipt : </td><td th:text="*{dateOfReceipt}" /></td>
+            </tr>
+            <tr width="100%">
+                <td width="10%">Name of work : </td><td colspan="3" width="30%" th:text="*{nameOfWork1}" class="widthFillAll" ></td>
+            </tr>
+            <tr width="100%">
+                <td width="10%">Name of work : </td><td colspan="3" width="30%" th:text="*{nameOfWork2}" class="widthFillAll" ></td>
+            </tr>
+        </table>
+
+        <center><h5>Test Result of Sand</h5></center>
+        <table border="1" align="center">
+            <tr>
+                <th>Sr. No.</th>
+                <th>Material</th>
+                <th>Sild and Clay Content (Limit-4% max)</th>
+                <th>Fitness Analysis (Limits -
+                    1) Concrete 2.60 to 3.6
+                    2) Masonry and plaster - m max
+                    3) Pointing & lind coat plaster - 1.6 ).
+                </th>
+            </tr>
+            <tr class="thbold">
+                <td>1</td><td>2</td><td>3</td><td>4</td>
+            </tr>
+            <tr th:each="sandMappingList, itemStat : *{sandMappingList}">
+                <td th:text="*{sandMappingList[__${itemStat.index}__].srNo}" />
+                <td th:text="*{sandMappingList[__${itemStat.index}__].material}"></td>
+                <td th:text="*{sandMappingList[__${itemStat.index}__].siltAndClayContent}"></td>
+                <td th:text="*{sandMappingList[__${itemStat.index}__].fitnessAnalysis}"></td>
+            </tr>
+        </table>
+        <br/>
+        <div>
+            1.The Test Results are based on samples received in the Laboratory
+            <br/>
+            2.Waste material after testing is given back to the Concerned Agency alongwith Test Report.
+        </div>
+        <br/>
+        <table width="100%">
+            <tr align="center" >
+                <td width="35%"/>
+                <td width="35%">
+                    No.PMGSY/Lab/Job.No.452<br/>
+                    Works Division(PMGSY),<br/>
+                    M.R.R.D.A. Thane<br/>
+                    Date:
+                </td>
+                <td width="35%"/>
+        </table>
+
+</div>
+<br/><br/><br/>
+<table width="100%">
+    <tr align="center" >
+        <td width="35%">Civil Engg. Asst.<br/>
+            PMGSY Distric Lab/Job<br/>
+            M.R.R.D.A Thane</td>
+        <td width="35%">Junior Engineer<br/>
+            PMGSY District Lab/Job<br/>
+            M.R.R.D.A Thane</td>
+        <td width="35%">Deputy Engineer<br/>
+            PMGSY District Lab/Job<br/>
+            M.R.R.D.A Thane</td>
+
+    </tr>
+</table>
+</form>
+</body>
+</html>
